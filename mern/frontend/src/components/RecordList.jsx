@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 const Record = (props) => (
   <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
     <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
@@ -39,9 +38,10 @@ export default function RecordList() {
   const [records, setRecords] = useState([]);
 
   // This method fetches the records from the database.
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
   useEffect(() => {
     async function getRecords() {
-      const response = await fetch(`backendUrl/record/`);
+      const response = await fetch(backendUrl+`/record/`);
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
         console.error(message);
@@ -56,7 +56,7 @@ export default function RecordList() {
 
   // This method will delete a record
   async function deleteRecord(id) {
-    await fetch(`backendUrl/record/${id}`, {
+    await fetch(backendUrl+`/record/${id}`, {
       method: "DELETE",
     });
     const newRecords = records.filter((el) => el._id !== id);
