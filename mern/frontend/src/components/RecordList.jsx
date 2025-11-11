@@ -38,7 +38,7 @@ export default function RecordList() {
   const [records, setRecords] = useState([]);
 
   // This method fetches the records from the database.
-  const backendUrl = "http://backend:5050"
+  const backendUrl =  import.meta.env.VITE_BACKEND_URL
   useEffect(() => {
     async function getRecords() {
       const response = await fetch(backendUrl+`/record/`);
