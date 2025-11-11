@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-const backendUrl = import.meta.env.VITE_BACKEND_URL
+const backendUrl = "http://backend:5050"
 export default function Record() {
   const [form, setForm] = useState({
     name: "",
